@@ -1,53 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
-    "footer": {
-      "type": "footer",
+    "noble-footer": {
+      "type": "noble-footer",
       "blocks": {
-        "footer-0": {
-          "type": "link_list",
+        "shop": {
+          "type": "link_column",
           "settings": {
-            "heading": "Quick links",
-            "menu": "footer"
+            "heading": "Shop",
+            "links": "All pieces\nBy craft\nBy category\nNew arrivals\nCo-ord sets"
           }
         },
-        "footer-1": {
-          "type": "link_list",
+        "craft": {
+          "type": "link_column",
           "settings": {
-            "heading": "Info",
-            "menu": "footer"
+            "heading": "The Craft",
+            "links": "Ajrakh\nSanganeri\nJamdani\nIkat\nBhujodi (Drop 2)"
           }
         },
-        "footer-2": {
-          "type": "text",
+        "about": {
+          "type": "link_column",
           "settings": {
-            "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "heading": "About",
+            "links": "Our origin\nArtisan partners\nThe Journal\nPress"
           }
+        },
+        "help": {
+          "type": "help",
+          "settings": {}
         }
       },
-      "block_order": [
-        "footer-0",
-        "footer-1",
-        "footer-2"
-      ],
-      "settings": {
-        "color_scheme": "scheme-1",
-        "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "show_social": true,
-        "enable_country_selector": false,
-        "enable_language_selector": false,
-        "payment_enable": true,
-        "show_policy": false,
-        "margin_top": 48,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "block_order": ["shop", "craft", "about", "help"],
+      "settings": {}
     }
   },
-  "order": [
-    "footer"
-  ]
+  "order": ["noble-footer"]
 }
