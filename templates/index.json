@@ -1,210 +1,361 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": {
+      "type": "noble-hero",
+      "settings": {
+        "heading": "Craft that lives in your wardrobe",
+        "button_label": "Explore the capsule",
+        "show_strip": true
+      }
+    },
+    "usp": {
+      "type": "noble-usp",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "u1": {
+          "type": "item",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "text_before": "Took ",
+            "accent": "14 days",
+            "text_after": " to craft six metres of fabric.",
+            "subtext": "Hand-printed Ajrakh, traditional methods."
           }
         },
-        "text": {
-          "type": "text",
+        "u2": {
+          "type": "item",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "text_before": "Solves ",
+            "accent": "what to wear",
+            "text_after": " on a Monday.",
+            "subtext": "Everyday silhouettes. Not occasion-only."
           }
         },
-        "button": {
-          "type": "buttons",
+        "u3": {
+          "type": "item",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text_before": "Mixes with the wardrobe ",
+            "accent": "you already own.",
+            "text_after": "",
+            "subtext": "Pair with a white tee. With a blazer."
+          }
+        },
+        "u4": {
+          "type": "item",
+          "settings": {
+            "text_before": "Pieces that ",
+            "accent": "express",
+            "text_after": " — not impress.",
+            "subtext": "Wear your roots. On your own terms."
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "u1",
+        "u2",
+        "u3",
+        "u4"
       ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+      "settings": {}
     },
-    "rich_text": {
-      "type": "rich-text",
+    "days": {
+      "type": "noble-circles",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "d1": {
+          "type": "item",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "label": "Mon",
+            "default_asset": "noble-cat-tops.png",
+            "active": true
           }
         },
-        "text": {
-          "type": "text",
+        "d2": {
+          "type": "item",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "label": "Tue",
+            "default_asset": "noble-cat-skirts.png"
+          }
+        },
+        "d3": {
+          "type": "item",
+          "settings": {
+            "label": "Wed",
+            "default_asset": "noble-cat-dresses.png"
+          }
+        },
+        "d4": {
+          "type": "item",
+          "settings": {
+            "label": "Thur",
+            "default_asset": "noble-cat-coords.png"
+          }
+        },
+        "d5": {
+          "type": "item",
+          "settings": {
+            "label": "Fri",
+            "default_asset": "noble-occasion-work.png"
+          }
+        },
+        "d6": {
+          "type": "item",
+          "settings": {
+            "label": "Sat",
+            "default_asset": "noble-occasion-brunch.png"
+          }
+        },
+        "d7": {
+          "type": "item",
+          "settings": {
+            "label": "Sun",
+            "default_asset": "noble-occasion-evening.png"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "heading": "Shop by day",
+        "shape": "oval"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
-      }
-    },
-    "collage": {
-      "type": "collage",
+    "occasions": {
+      "type": "noble-occasions",
       "blocks": {
-        "collection-0": {
-          "type": "collection",
+        "o1": {
+          "type": "card",
           "settings": {
-            "collection": ""
+            "title": "Work",
+            "text": "Structured silhouettes. Craft as detail, not statement.",
+            "default_asset": "noble-occasion-work.png"
           }
         },
-        "product": {
+        "o2": {
+          "type": "card",
+          "settings": {
+            "title": "Brunch",
+            "text": "Relaxed but considered. Print-forward. Loafers or sandals.",
+            "default_asset": "noble-occasion-brunch.png",
+            "link_label": "Shop the look →"
+          }
+        },
+        "o3": {
+          "type": "card",
+          "settings": {
+            "title": "Evening",
+            "text": "Drapey, moody, heirloom energy. The Ajrakh story does the work.",
+            "default_asset": "noble-occasion-evening.png"
+          }
+        },
+        "o4": {
+          "type": "card",
+          "settings": {
+            "title": "Date Night",
+            "text": "Deep neckline. Colour that reads in low light. Prints that tell the story.",
+            "default_asset": "noble-occasion-datenight.png"
+          }
+        }
+      },
+      "block_order": [
+        "o1",
+        "o2",
+        "o3",
+        "o4"
+      ],
+      "settings": {
+        "heading": "Not for occasions.",
+        "heading_italic": "For the everyday.",
+        "subtext": "Four situations. One capsule. Built to mix with what you already own.",
+        "cta_label": "Shop the collection"
+      }
+    },
+    "featured": {
+      "type": "noble-featured",
+      "blocks": {
+        "p1": {
           "type": "product",
           "settings": {
-            "product": "",
-            "second_image": false
+            "craft": "Sanganeri · Jaipur",
+            "title": "Sanganeri crop shirt + shorts",
+            "price": "$445 CAD",
+            "default_asset": "noble-product-sanganeri.png",
+            "badge": "Bestseller",
+            "badge_style": "default"
           }
         },
-        "collection-1": {
-          "type": "collection",
+        "p2": {
+          "type": "product",
           "settings": {
-            "collection": ""
+            "craft": "Ajrakh motif · Kutch",
+            "title": "Indigo vest + wide-leg co-ord",
+            "price": "$565 CAD",
+            "default_asset": "noble-product-indigo.png"
+          }
+        },
+        "p3": {
+          "type": "product",
+          "settings": {
+            "craft": "Jamdani · West Bengal",
+            "title": "Jamdani burgundy midi skirt",
+            "price": "$310 CAD",
+            "default_asset": "noble-product-jamdani.png",
+            "badge": "New",
+            "badge_style": "new"
+          }
+        },
+        "p4": {
+          "type": "product",
+          "settings": {
+            "craft": "Ikat · Pochampally",
+            "title": "Ikat mini skirt",
+            "price": "$295 CAD",
+            "default_asset": "noble-product-ikat.png"
           }
         }
       },
       "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
+        "p1",
+        "p2",
+        "p3",
+        "p4"
       ],
       "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Featured Pieces",
+        "subtext": "Hand-picked from the soft-launch capsule. Each carries a number, a craft, and the hours behind it.",
+        "link_label": "Shop all styles"
       }
     },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
+    "categories": {
+      "type": "noble-circles",
       "blocks": {
-        "column1": {
-          "type": "column",
+        "c1": {
+          "type": "item",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "label": "Tops",
+            "default_asset": "noble-cat-tops.png"
           }
         },
-        "column2": {
-          "type": "column",
+        "c2": {
+          "type": "item",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "label": "Skirts",
+            "default_asset": "noble-cat-skirts.png"
           }
         },
-        "column3": {
-          "type": "column",
+        "c3": {
+          "type": "item",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
+            "label": "Trousers",
+            "default_asset": "noble-product-indigo.png"
+          }
+        },
+        "c4": {
+          "type": "item",
+          "settings": {
+            "label": "Dresses",
+            "default_asset": "noble-cat-dresses.png"
+          }
+        },
+        "c5": {
+          "type": "item",
+          "settings": {
+            "label": "Co-ords",
+            "default_asset": "noble-cat-coords.png"
+          }
+        },
+        "c6": {
+          "type": "item",
+          "settings": {
+            "label": "Menswear",
+            "default_asset": "noble-product-sanganeri.png"
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Find the silhouette first.",
+        "shape": "circle"
       }
+    },
+    "fabric": {
+      "type": "noble-fabric-story",
+      "settings": {}
+    },
+    "artisan": {
+      "type": "noble-artisan",
+      "settings": {}
+    },
+    "stories": {
+      "type": "noble-stories",
+      "blocks": {
+        "s1": {
+          "type": "story",
+          "settings": {
+            "title": "Inside the Kutch workshop",
+            "default_asset": "noble-story-1.png"
+          }
+        },
+        "s2": {
+          "type": "story",
+          "settings": {
+            "title": "Indigo, the slow way",
+            "default_asset": "noble-story-2.png"
+          }
+        },
+        "s3": {
+          "type": "story",
+          "settings": {
+            "title": "Jamdani on the loom",
+            "default_asset": "noble-story-3.png"
+          }
+        },
+        "s4": {
+          "type": "story",
+          "settings": {
+            "default_asset": "noble-story-4.png",
+            "is_instagram": true
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
-    "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "hero",
+    "usp",
+    "days",
+    "occasions",
+    "featured",
+    "categories",
+    "fabric",
+    "artisan",
+    "stories"
   ]
 }
