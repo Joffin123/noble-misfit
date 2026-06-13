@@ -1,0 +1,38 @@
+{%- comment -%} Noble Misfit — "Made by hands that remember" banner (Figma 1:920 / 1:974) {%- endcomment -%}
+<section class="noble-artisan relative flex min-h-[46rem] overflow-hidden md:min-h-[41vw] md:max-h-[58.9rem]">
+  {%- if section.settings.image != blank -%}
+    {{ section.settings.image | image_url: width: 2200 | image_tag: class: 'absolute inset-0 w-full h-full object-cover', loading: 'lazy', widths: '900,1400,1800,2200' }}
+  {%- else -%}
+    <img src="{{ 'noble-artisan.png' | asset_url }}" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+  {%- endif -%}
+  <span class="absolute inset-0" style="background: linear-gradient(179deg, rgba(0,0,0,0.77) 43%, rgba(0,0,0,0) 70%);"></span>
+
+  <div class="relative z-[1] mx-auto flex w-full max-w-canvas flex-col items-start gap-6 px-5 py-16 md:px-8 lg:px-20 lg:py-[12rem]">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="m-0 max-w-[64rem] font-display capitalize text-[clamp(3rem,3.8vw,5.4rem)] leading-[1.05] text-white">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <p class="m-0 max-w-[48rem] font-gill text-[1.7rem] font-light leading-[1.5] text-[rgba(248,242,229,0.88)]">{{ section.settings.text }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="mt-2 inline-flex items-center justify-center bg-white px-[2.2rem] py-[1.1rem] font-sans text-[0.95rem] font-semibold uppercase tracking-[0.186rem] text-black transition-colors hover:bg-noble-cream">
+        {{ section.settings.button_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Noble Artisan Banner",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Made by hands that remember." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Every length of fabric in this collection began on a loom or under a wooden block — somewhere between Kutch, Jaipur, Telangana, and Dhaka. There are no machine substitutes for what they do." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Know our story" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Noble Artisan Banner" }]
+}
+{% endschema %}
