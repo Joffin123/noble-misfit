@@ -12,7 +12,7 @@
     {%- endif -%}
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" data-noble-reveal-group="110">
+  <div class="noble-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" data-noble-reveal-group="110">
     {%- for block in section.blocks -%}
       <a
         href="{{ block.settings.link | default: '#' }}"

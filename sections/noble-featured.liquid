@@ -21,7 +21,7 @@
       {%- endif -%}
     </div>
 
-    <div class="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4" data-noble-reveal-group="90">
+    <div class="noble-grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4" data-noble-reveal-group="90">
       {%- if section.settings.collection != blank and section.settings.collection.products_count > 0 -%}
         {%- for product in section.settings.collection.products limit: 4 -%}
           <a href="{{ product.url }}" class="group flex flex-col gap-[1.8rem] no-underline" data-noble-reveal>
