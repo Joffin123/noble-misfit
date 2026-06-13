@@ -1,0 +1,1 @@
+E:/noble-misfit1/futuristic-quality-theme/AGENTS.md
