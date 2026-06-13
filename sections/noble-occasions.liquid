@@ -22,7 +22,7 @@
         {%- if block.settings.image != blank -%}
           {{ block.settings.image | image_url: width: 800 | image_tag: class: 'absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105', loading: 'lazy', widths: '400,600,800' }}
         {%- elsif block.settings.default_asset != blank -%}
-          <img src="{{ block.settings.default_asset | asset_url }}" alt="{{ block.settings.title | escape }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <img src="{{ block.settings.default_asset | asset_url }}" alt="{{ block.settings.title | escape }}" width="668" height="890" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
         {%- endif -%}
         <span class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.65));"></span>
         <span class="absolute inset-x-0 bottom-0 z-[1] flex flex-col gap-[0.7rem] p-[2.7rem]">

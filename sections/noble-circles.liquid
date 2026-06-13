@@ -39,7 +39,7 @@
             {%- if img != blank -%}
               {{ img | image_url: width: 400 | image_tag: class: 'absolute inset-0 w-full h-full object-cover', loading: 'lazy', widths: '200,300,400' }}
             {%- elsif fallback != blank -%}
-              <img src="{{ fallback | asset_url }}" alt="{{ block.settings.label | escape }}" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+              <img src="{{ fallback | asset_url }}" alt="{{ block.settings.label | escape }}" width="320" height="430" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
             {%- endif -%}
           </span>
           <span class="text-center font-display capitalize text-noble-ink {% if block.settings.active %}text-[1.9rem]{% else %}text-[1.7rem]{% endif %}">
