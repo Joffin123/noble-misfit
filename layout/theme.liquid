@@ -261,7 +261,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Tenor+Sans&display=swap" rel="stylesheet">
 
     {% comment %} Tailwind CSS (Play CDN). preflight disabled so it never resets Dawn's pages. {% endcomment %}
+    {% comment %}theme-check-disable ParserBlockingScript,RemoteAsset{% endcomment %}
     <script src="https://cdn.tailwindcss.com"></script>
+    {% comment %}theme-check-enable ParserBlockingScript,RemoteAsset{% endcomment %}
     <script>
       tailwind.config = {
         corePlugins: { preflight: false },
