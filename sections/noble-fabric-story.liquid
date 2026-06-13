@@ -1,0 +1,52 @@
+{%- comment -%} Noble Misfit — "Fabric tells a story" Ikat banner (Figma 1:977) {%- endcomment -%}
+<section class="noble-fabric bg-noble-bg py-16 md:py-[6.4rem]">
+  <div class="mx-auto max-w-canvas px-5 md:px-8 lg:px-20">
+    <div class="mb-[4.4rem] flex flex-col items-center gap-4 text-center">
+      {%- if section.settings.heading != blank or section.settings.heading_italic != blank -%}
+        <h2 class="m-0 text-[clamp(3rem,4.4vw,5.2rem)] leading-[1.1] text-noble-ink">
+          <span class="font-display">{{ section.settings.heading }}</span>
+          <span class="font-serifit italic">{{ section.settings.heading_italic }}</span>
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <p class="m-0 max-w-[64.3rem] font-gill text-[2rem] font-light leading-[1.4] text-noble-slate">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+    </div>
+
+    <a href="{{ section.settings.link | default: '#' }}" class="relative block min-h-[30rem] overflow-hidden rounded-[1.8rem] aspect-[1159/475]">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 2000 | image_tag: class: 'absolute inset-0 w-full h-full object-cover', loading: 'lazy', widths: '800,1200,1600,2000' }}
+      {%- else -%}
+        <img src="{{ 'noble-fabric-ikat-b.png' | asset_url }}" alt="{{ section.settings.fabric_name | escape }}" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+      {%- endif -%}
+      <span class="absolute inset-0" style="background: linear-gradient(246deg, rgba(102,102,102,0) 58%, rgba(0,0,0,0.74) 83%);"></span>
+      <span class="absolute z-[1] flex flex-col gap-[1.6rem] left-[clamp(2.4rem,5vw,6rem)] bottom-[clamp(2.4rem,5vw,6rem)]">
+        {%- if section.settings.fabric_caption != blank -%}
+          <span class="m-0 max-w-[26rem] font-gill text-[clamp(2rem,2.3vw,3.3rem)] font-light leading-[1.1] text-white">{{ section.settings.fabric_caption }}</span>
+        {%- endif -%}
+        <span class="m-0 font-display text-[clamp(3.4rem,3.6vw,5.2rem)] leading-none text-white">{{ section.settings.fabric_name }}</span>
+        {%- if section.settings.link_label != blank -%}
+          <span class="mt-2 self-start border-b border-noble-gold-light pb-[0.45rem] font-gill text-[1.1rem] font-semibold uppercase tracking-[0.18rem] text-noble-offwhite">{{ section.settings.link_label }} →</span>
+        {%- endif -%}
+      </span>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Noble Fabric Story",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Fabric tells a story" },
+    { "type": "text", "id": "heading_italic", "label": "Heading (italic)", "default": "before you say a word." },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Five textile traditions. Five communities. Each piece carries the hands and hours behind it. Begin where the cloth begins." },
+    { "type": "image_picker", "id": "image", "label": "Banner image" },
+    { "type": "text", "id": "fabric_name", "label": "Fabric name", "default": "Ikat" },
+    { "type": "text", "id": "fabric_caption", "label": "Caption", "default": "Pre-dyed yarns woven" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Learn more" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Noble Fabric Story" }]
+}
+{% endschema %}
