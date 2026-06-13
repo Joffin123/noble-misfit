@@ -1,0 +1,121 @@
+{%- comment -%} Noble Misfit — footer (Figma 1:708) {%- endcomment -%}
+<footer class="noble-footer bg-noble-green text-noble-paper">
+  <div class="mx-auto max-w-canvas px-5 md:px-8 lg:px-20">
+    <div class="grid grid-cols-1 gap-10 pt-[6.4rem] pb-[4.8rem] sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.2fr] lg:gap-12">
+      {%- comment -%} Brand column {%- endcomment -%}
+      <div class="flex flex-col gap-3 text-white sm:col-span-2 lg:col-span-1">
+        {% render 'noble-logo', size: '11rem' %}
+        {%- if section.settings.tagline != blank -%}
+          <p class="m-0 mt-2 font-serifit text-[2rem] italic leading-[1.15] text-[rgba(248,242,229,0.85)]">{{ section.settings.tagline }}</p>
+        {%- endif -%}
+        {%- if section.settings.subline != blank -%}
+          <p class="m-0 font-gill text-[1.8rem] font-light leading-[1.12] text-[rgba(248,242,229,0.55)]">{{ section.settings.subline }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Link columns {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'link_column' -%}
+          <div {{ block.shopify_attributes }}>
+            <p class="m-0 mb-5 font-sans text-[1.1rem] font-semibold uppercase tracking-[0.242rem] text-noble-gold">{{ block.settings.heading }}</p>
+            {%- if block.settings.menu != blank -%}
+              <ul class="m-0 flex list-none flex-col gap-3 p-0">
+                {%- for link in block.settings.menu.links -%}
+                  <li><a href="{{ link.url }}" class="font-sans text-[1.3rem] text-noble-paper no-underline transition-colors hover:text-noble-gold-light">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- else -%}
+              <ul class="m-0 flex list-none flex-col gap-3 p-0">
+                {%- assign items = block.settings.links | newline_to_br | split: '<br />' -%}
+                {%- for item in items -%}
+                  {%- assign t = item | strip -%}
+                  {%- if t != blank -%}
+                    <li><a href="{{ block.settings.fallback_link | default: '#' }}" class="font-sans text-[1.3rem] text-noble-paper no-underline transition-colors hover:text-noble-gold-light">{{ t }}</a></li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- elsif block.type == 'help' -%}
+          <div class="flex flex-col gap-[0.7rem]" {{ block.shopify_attributes }}>
+            <p class="m-0 mb-2 font-sans text-[1.1rem] font-semibold uppercase tracking-[0.242rem] text-noble-gold">{{ block.settings.heading }}</p>
+            {%- if block.settings.email != blank -%}
+              <a href="mailto:{{ block.settings.email }}" class="font-sans text-[1.3rem] font-medium text-noble-offwhite no-underline hover:text-noble-gold-light">{{ block.settings.email }}</a>
+            {%- endif -%}
+            {%- if block.settings.hours != blank -%}
+              <p class="m-0 font-sans text-[1.3rem] text-noble-paper">{{ block.settings.hours }}</p>
+            {%- endif -%}
+            {%- if block.settings.link1_label != blank -%}
+              <a href="{{ block.settings.link1_url | default: '#' }}" class="self-start border-b border-[rgba(248,242,229,0.4)] font-sans text-[1.3rem] text-noble-paper no-underline transition-colors hover:border-noble-gold-light hover:text-noble-gold-light">{{ block.settings.link1_label }}</a>
+            {%- endif -%}
+            {%- if block.settings.link2_label != blank -%}
+              <a href="{{ block.settings.link2_url | default: '#' }}" class="self-start border-b border-[rgba(248,242,229,0.4)] font-sans text-[1.3rem] text-noble-paper no-underline transition-colors hover:border-noble-gold-light hover:text-noble-gold-light">{{ block.settings.link2_label }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="flex flex-wrap items-center justify-between gap-5 border-t border-[rgba(248,242,229,0.12)] pt-[3.2rem] pb-[2.4rem]">
+      <p class="m-0 font-sans text-[1.1rem] uppercase tracking-[0.176rem] text-[rgba(248,242,229,0.45)]">{{ section.settings.copyright }}</p>
+      <div class="flex gap-[1.8rem]">
+        {%- if section.settings.social_1_label != blank -%}<a href="{{ section.settings.social_1_url | default: '#' }}" class="font-sans text-[1.1rem] uppercase tracking-[0.176rem] text-[rgba(248,242,229,0.6)] no-underline transition-colors hover:text-noble-gold-light">{{ section.settings.social_1_label }}</a>{%- endif -%}
+        {%- if section.settings.social_2_label != blank -%}<a href="{{ section.settings.social_2_url | default: '#' }}" class="font-sans text-[1.1rem] uppercase tracking-[0.176rem] text-[rgba(248,242,229,0.6)] no-underline transition-colors hover:text-noble-gold-light">{{ section.settings.social_2_label }}</a>{%- endif -%}
+        {%- if section.settings.social_3_label != blank -%}<a href="{{ section.settings.social_3_url | default: '#' }}" class="font-sans text-[1.1rem] uppercase tracking-[0.176rem] text-[rgba(248,242,229,0.6)] no-underline transition-colors hover:text-noble-gold-light">{{ section.settings.social_3_label }}</a>{%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Noble Footer",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Craft that lives in your wardrobe." },
+    { "type": "text", "id": "subline", "label": "Subline", "default": "Wear your roots. On your own terms." },
+    { "type": "text", "id": "copyright", "label": "Copyright", "default": "© Noble Misfit 2026 · Crafted in India · Worn everywhere" },
+    { "type": "text", "id": "social_1_label", "label": "Social 1 label", "default": "Instagram" },
+    { "type": "url", "id": "social_1_url", "label": "Social 1 url" },
+    { "type": "text", "id": "social_2_label", "label": "Social 2 label", "default": "LinkedIn" },
+    { "type": "url", "id": "social_2_url", "label": "Social 2 url" },
+    { "type": "text", "id": "social_3_label", "label": "Social 3 label", "default": "YouTube" },
+    { "type": "url", "id": "social_3_url", "label": "Social 3 url" }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu (overrides text links)" },
+        { "type": "textarea", "id": "links", "label": "Text links (one per line)", "default": "All pieces\nBy craft\nBy category\nNew arrivals\nCo-ord sets" },
+        { "type": "url", "id": "fallback_link", "label": "Text-link destination" }
+      ]
+    },
+    {
+      "type": "help",
+      "name": "Help column",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Need help?" },
+        { "type": "text", "id": "email", "label": "Email", "default": "info@noblemisfit.com" },
+        { "type": "text", "id": "hours", "label": "Hours", "default": "Mon — Fri · 11:00 to 17:00 ET" },
+        { "type": "text", "id": "link1_label", "label": "Link 1 label", "default": "Contact us" },
+        { "type": "url", "id": "link1_url", "label": "Link 1 url" },
+        { "type": "text", "id": "link2_label", "label": "Link 2 label", "default": "Returns · FAQ" },
+        { "type": "url", "id": "link2_url", "label": "Link 2 url" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Noble Footer",
+      "blocks": [
+        { "type": "link_column", "settings": { "heading": "Shop", "links": "All pieces\nBy craft\nBy category\nNew arrivals\nCo-ord sets" } },
+        { "type": "link_column", "settings": { "heading": "The Craft", "links": "Ajrakh\nSanganeri\nJamdani\nIkat\nBhujodi (Drop 2)" } },
+        { "type": "link_column", "settings": { "heading": "About", "links": "Our origin\nArtisan partners\nThe Journal\nPress" } },
+        { "type": "help", "settings": {} }
+      ]
+    }
+  ]
+}
+{% endschema %}
