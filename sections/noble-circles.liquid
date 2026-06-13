@@ -23,11 +23,11 @@
           assign fallback = block.settings.default_asset
           if is_oval
             assign shape_cls = 'rounded-[50%] aspect-[149/203] w-[clamp(11rem,10.4vw,15rem)]'
-            if block.settings.active
-              assign shape_cls = 'rounded-[50%] aspect-[149/224] w-[clamp(12.4rem,11.6vw,16.4rem)] shadow-[0_1.8rem_3rem_rgba(23,64,50,0.18)]'
-            endif
           else
-            assign shape_cls = 'rounded-full aspect-square w-[clamp(12.4rem,11.6vw,16.7rem)]'
+            assign shape_cls = 'rounded-full aspect-square w-[clamp(11rem,10.4vw,15rem)]'
+          endif
+          if block.settings.active
+            assign shape_cls = shape_cls | append: ' ring-2 ring-noble-gold-light ring-offset-4 ring-offset-noble-bg shadow-[0_1.4rem_2.6rem_rgba(23,64,50,0.18)]'
           endif
         -%}
         <a
