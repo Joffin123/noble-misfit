@@ -1,0 +1,65 @@
+{%- comment -%} Noble Misfit — USP bar overlapping a green band (Figma 1:6 / 1:30) {%- endcomment -%}
+<section class="noble-usp bg-noble-bg">
+  <div class="h-[5.9rem] bg-noble-green"></div>
+  <div class="mx-auto -mt-[3.7rem] grid max-w-canvas grid-cols-1 bg-white px-4 sm:grid-cols-2 lg:grid-cols-4 lg:px-0">
+    {%- for block in section.blocks -%}
+      <div
+        class="noble-usp__item relative flex min-h-[14.5rem] flex-col justify-center gap-[1rem] px-8 py-[3.4rem]"
+        {{ block.shopify_attributes }}
+      >
+        <p class="m-0 max-w-[22rem] font-display text-[1.8rem] leading-[1.25] text-noble-ink">
+          {{ block.settings.text_before }}<em class="italic text-noble-terracotta-soft">{{ block.settings.accent }}</em>{{ block.settings.text_after }}
+        </p>
+        <p class="m-0 font-gill text-[1.4rem] font-light leading-[1.25] text-noble-muted">
+          {{ block.settings.subtext }}
+        </p>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% style %}
+  @media screen and (min-width: 1024px) {
+    #shopify-section-{{ section.id }} .noble-usp__item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      height: 12.9rem;
+      width: 1px;
+      background: #e8d8d2;
+      transform: translateY(-50%) rotate(14.3deg);
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Noble USP Bar",
+  "tag": "section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Value prop",
+      "settings": [
+        { "type": "text", "id": "text_before", "label": "Text before accent" },
+        { "type": "text", "id": "accent", "label": "Accent (italic)" },
+        { "type": "text", "id": "text_after", "label": "Text after accent" },
+        { "type": "text", "id": "subtext", "label": "Subtext" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Noble USP Bar",
+      "blocks": [
+        { "type": "item", "settings": { "text_before": "Took ", "accent": "14 days", "text_after": " to craft six metres of fabric.", "subtext": "Hand-printed Ajrakh, traditional methods." } },
+        { "type": "item", "settings": { "text_before": "Solves ", "accent": "what to wear", "text_after": " on a Monday.", "subtext": "Everyday silhouettes. Not occasion-only." } },
+        { "type": "item", "settings": { "text_before": "Mixes with the wardrobe ", "accent": "you already own.", "text_after": "", "subtext": "Pair with a white tee. With a blazer." } },
+        { "type": "item", "settings": { "text_before": "Pieces that ", "accent": "express", "text_after": " — not impress.", "subtext": "Wear your roots. On your own terms." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
