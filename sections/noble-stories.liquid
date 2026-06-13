@@ -1,0 +1,86 @@
+{%- comment -%} Noble Misfit — "Stories from the loom" grid (Figma 1:702 / 1:905) {%- endcomment -%}
+<section class="noble-stories bg-noble-bg py-16 md:py-[6.4rem]">
+  <div class="mx-auto max-w-canvas px-5 md:px-8 lg:px-20">
+    <div class="mb-[4.4rem] flex max-w-[64rem] flex-col gap-[1.4rem]">
+      {%- if section.settings.heading != blank or section.settings.heading_italic != blank -%}
+        <h2 class="m-0 text-[clamp(2.6rem,3.4vw,4rem)] leading-[1.1] text-noble-ink">
+          <span class="font-display">{{ section.settings.heading }}</span>
+          <span class="font-serifit italic">{{ section.settings.heading_italic }}</span>
+        </h2>
+      {%- endif -%}
+      {%- if section.settings.subtext != blank -%}
+        <p class="m-0 font-gill text-[1.6rem] font-light leading-[1.4] text-noble-slate">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="flex gap-6 overflow-x-auto pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.link | default: '#' }}"
+          class="group relative block flex-none overflow-hidden rounded-[1rem] bg-noble-cream aspect-[302/468] w-[clamp(24rem,21vw,30.2rem)] no-underline"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 700 | image_tag: class: 'absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105', loading: 'lazy', widths: '300,500,700' }}
+          {%- elsif block.settings.default_asset != blank -%}
+            <img src="{{ block.settings.default_asset | asset_url }}" alt="{{ block.settings.title | escape }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          {%- endif -%}
+
+          {%- if block.settings.is_instagram -%}
+            <span class="absolute inset-0 bg-[rgba(23,30,28,0.55)]"></span>
+            <span class="absolute inset-0 z-[1] flex items-center justify-center text-white">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4.5"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+          {%- else -%}
+            <span class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0) 55%);"></span>
+            {%- if block.settings.title != blank -%}
+              <span class="absolute inset-x-0 bottom-0 z-[1] p-6">
+                <span class="block font-display text-[2rem] leading-tight text-white">{{ block.settings.title }}</span>
+              </span>
+            {%- endif -%}
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Noble Stories",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Stories from" },
+    { "type": "text", "id": "heading_italic", "label": "Heading (italic)", "default": "the loom." },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Process notes, maker portraits, and the slow news from each craft cluster we work with." }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Story card",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "default_asset", "label": "Fallback asset filename" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "is_instagram", "label": "Instagram tile (icon overlay)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Noble Stories",
+      "blocks": [
+        { "type": "story", "settings": { "title": "Inside the Kutch workshop", "default_asset": "noble-story-1.png" } },
+        { "type": "story", "settings": { "title": "Indigo, the slow way", "default_asset": "noble-story-2.png" } },
+        { "type": "story", "settings": { "title": "Jamdani on the loom", "default_asset": "noble-story-3.png" } },
+        { "type": "story", "settings": { "default_asset": "noble-story-4.png", "is_instagram": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}
