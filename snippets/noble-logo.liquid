@@ -1,0 +1,16 @@
+{%- comment -%}
+  Noble Misfit stacked wordmark. Inherits color from parent (currentColor),
+  so it renders white over the hero / dark green header and ink elsewhere.
+  Accepts: size (optional, CSS width e.g. '11rem')
+{%- endcomment -%}
+<span
+  class="noble-logo"
+  role="img"
+  aria-label="{{ shop.name | escape }}"
+  {% if size %}
+    style="--noble-logo-w: {{ size }};"
+  {% endif %}
+>
+  <span class="noble-logo__line noble-logo__line--top"></span>
+  <span class="noble-logo__line noble-logo__line--bottom"></span>
+</span>
