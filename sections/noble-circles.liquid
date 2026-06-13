@@ -1,0 +1,113 @@
+{%- comment -%} Noble Misfit — circular/oval shop nav (Shop by day / by category) {%- endcomment -%}
+{%- liquid
+  assign is_oval = false
+  if section.settings.shape == 'oval'
+    assign is_oval = true
+  endif
+-%}
+<section class="noble-circles bg-noble-bg py-16 md:py-[6.4rem]">
+  <div class="mx-auto max-w-canvas px-5 md:px-8 lg:px-20">
+    <div class="mb-10 flex flex-col gap-3">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="m-0 font-display text-[clamp(2.4rem,3vw,3.6rem)] leading-[1.1] text-noble-ink">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="m-0 max-w-[56rem] font-gill text-[1.6rem] font-light text-noble-slate">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="flex items-end gap-5 overflow-x-auto pb-4 md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign img = block.settings.image
+          assign fallback = block.settings.default_asset
+          if is_oval
+            assign shape_cls = 'rounded-[50%] aspect-[149/203] w-[clamp(11rem,10.4vw,15rem)]'
+            if block.settings.active
+              assign shape_cls = 'rounded-[50%] aspect-[149/224] w-[clamp(12.4rem,11.6vw,16.4rem)] shadow-[0_1.8rem_3rem_rgba(23,64,50,0.18)]'
+            endif
+          else
+            assign shape_cls = 'rounded-full aspect-square w-[clamp(12.4rem,11.6vw,16.7rem)]'
+          endif
+        -%}
+        <a
+          href="{{ block.settings.link | default: '#' }}"
+          class="group flex flex-none flex-col items-center gap-[1.4rem] no-underline"
+          {{ block.shopify_attributes }}
+        >
+          <span class="relative overflow-hidden bg-[linear-gradient(160deg,#dcd7cd,#cfc9bd)] transition-transform duration-300 group-hover:-translate-y-2 {{ shape_cls }}">
+            {%- if img != blank -%}
+              {{ img | image_url: width: 400 | image_tag: class: 'absolute inset-0 w-full h-full object-cover', loading: 'lazy', widths: '200,300,400' }}
+            {%- elsif fallback != blank -%}
+              <img src="{{ fallback | asset_url }}" alt="{{ block.settings.label | escape }}" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+            {%- endif -%}
+          </span>
+          <span class="text-center font-display capitalize text-noble-ink {% if block.settings.active %}text-[1.9rem]{% else %}text-[1.7rem]{% endif %}">
+            {{ block.settings.label }}
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Noble Circle Nav",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Shop by day" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "Shape",
+      "options": [
+        { "value": "oval", "label": "Oval (days)" },
+        { "value": "circle", "label": "Circle (categories)" }
+      ],
+      "default": "oval"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Circle",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Tops" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "default_asset", "label": "Fallback asset filename", "info": "Theme asset used if no image is picked." },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "checkbox", "id": "active", "label": "Highlight (today / active)", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Day",
+      "settings": { "heading": "Shop by day", "shape": "oval" },
+      "blocks": [
+        { "type": "item", "settings": { "label": "Mon", "default_asset": "noble-cat-tops.png", "active": true } },
+        { "type": "item", "settings": { "label": "Tue", "default_asset": "noble-cat-skirts.png" } },
+        { "type": "item", "settings": { "label": "Wed", "default_asset": "noble-cat-dresses.png" } },
+        { "type": "item", "settings": { "label": "Thur", "default_asset": "noble-cat-coords.png" } },
+        { "type": "item", "settings": { "label": "Fri", "default_asset": "noble-occasion-work.png" } },
+        { "type": "item", "settings": { "label": "Sat", "default_asset": "noble-occasion-brunch.png" } },
+        { "type": "item", "settings": { "label": "Sun", "default_asset": "noble-occasion-evening.png" } }
+      ]
+    },
+    {
+      "name": "Shop by Category",
+      "settings": { "heading": "Find the silhouette first.", "shape": "circle" },
+      "blocks": [
+        { "type": "item", "settings": { "label": "Tops", "default_asset": "noble-cat-tops.png" } },
+        { "type": "item", "settings": { "label": "Skirts", "default_asset": "noble-cat-skirts.png" } },
+        { "type": "item", "settings": { "label": "Trousers", "default_asset": "noble-product-indigo.png" } },
+        { "type": "item", "settings": { "label": "Dresses", "default_asset": "noble-cat-dresses.png" } },
+        { "type": "item", "settings": { "label": "Co-ords", "default_asset": "noble-cat-coords.png" } },
+        { "type": "item", "settings": { "label": "Menswear", "default_asset": "noble-product-sanganeri.png" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
