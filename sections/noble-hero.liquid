@@ -1,48 +1,84 @@
-{%- comment -%} Noble Misfit — hero banner (Figma 1:3 / 1:5) {%- endcomment -%}
+{%- comment -%} Noble Misfit — hero Swiper slider (Figma 1:3 / 1:5) {%- endcomment -%}
+{%- liquid
+  assign slides = section.blocks
+  assign has_slider = false
+  if slides.size > 1
+    assign has_slider = true
+  endif
+-%}
 <section class="noble-hero noble-hero--overlay-header relative">
-  <div class="relative overflow-hidden h-[78svh] max-h-[64rem] md:h-[56vw] md:max-h-[80.4rem]">
-    {%- if section.settings.image != blank -%}
-      {{
-        section.settings.image
-        | image_url: width: 2200
-        | image_tag:
-          class: 'absolute inset-0 w-full h-full object-cover object-top',
-          loading: 'eager',
-          fetchpriority: 'high',
-          sizes: '100vw',
-          widths: '750, 1100, 1500, 2000, 2200'
-      }}
-    {%- else -%}
-      <img
-        src="{{ 'noble-hero.png' | asset_url }}"
-        alt=""
-        width="2200"
-        height="1228"
-        class="absolute inset-0 w-full h-full object-cover object-top"
-        loading="eager"
-      >
-    {%- endif -%}
+  <div
+    class="swiper noble-swiper relative overflow-hidden h-[78svh] max-h-[64rem] md:h-[56vw] md:max-h-[80.4rem]"
+    data-noble-swiper
+    data-loop="{% if has_slider %}true{% else %}false{% endif %}"
+    data-effect="{{ section.settings.transition }}"
+    data-autoplay="{{ section.settings.autoplay }}"
+    data-autoplay-delay="{{ section.settings.autoplay_delay | times: 1000 }}"
+    data-pagination="{% if has_slider %}{{ section.settings.show_pagination }}{% else %}false{% endif %}"
+    data-navigation="{% if has_slider %}{{ section.settings.show_navigation }}{% else %}false{% endif %}"
+  >
+    <div class="swiper-wrapper">
+      {%- for block in slides -%}
+        <div class="swiper-slide relative" {{ block.shopify_attributes }}>
+          <div class="absolute inset-0 overflow-hidden">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 2200
+                | image_tag:
+                  class: 'absolute inset-0 w-full h-full object-cover object-top',
+                  loading: 'eager',
+                  fetchpriority: 'high',
+                  sizes: '100vw',
+                  widths: '750, 1100, 1500, 2000, 2200'
+              }}
+            {%- else -%}
+              <img src="{{ 'noble-hero.png' | asset_url }}" alt="" width="2200" height="1228" class="absolute inset-0 w-full h-full object-cover object-top" loading="eager">
+            {%- endif -%}
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 43%, rgba(0,0,0,0.8) 74.5%);"></div>
+          </div>
 
-    <div
-      class="absolute inset-0"
-      style="background: linear-gradient(to bottom, rgba(0,0,0,0) 43%, rgba(0,0,0,0.8) 74.5%);"
-    ></div>
-
-    <div class="absolute left-1/2 top-1/2 z-[1] flex w-[min(92%,80rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6 text-center">
-      {%- if section.settings.heading != blank -%}
-        <h1 class="m-0 font-display capitalize text-white leading-[1.05] text-[clamp(3rem,4.4vw,5.4rem)]">
-          {{ section.settings.heading }}
-        </h1>
-      {%- endif -%}
-      {%- if section.settings.button_label != blank -%}
-        <a
-          href="{{ section.settings.button_link | default: '#' }}"
-          class="inline-flex items-center justify-center border border-white/0 bg-white px-7 py-[1.1rem] font-sans text-[1.1rem] font-semibold uppercase tracking-[0.21rem] text-[#101010] transition-colors duration-300 hover:border-white hover:bg-transparent hover:text-white"
-        >
-          {{ section.settings.button_label }}
-        </a>
-      {%- endif -%}
+          <div class="noble-hero__content absolute left-1/2 top-1/2 z-[2] flex w-[min(92%,80rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6 text-center">
+            {%- if block.settings.eyebrow != blank -%}
+              <span class="font-sans text-[1.1rem] font-semibold uppercase tracking-[0.3rem] text-noble-gold-light">{{ block.settings.eyebrow }}</span>
+            {%- endif -%}
+            {%- if block.settings.heading != blank -%}
+              <h2 class="m-0 font-display capitalize text-white leading-[1.05] text-[clamp(3rem,4.4vw,5.4rem)]">{{ block.settings.heading }}</h2>
+            {%- endif -%}
+            {%- if block.settings.button_label != blank -%}
+              <a href="{{ block.settings.button_link | default: '#' }}" class="inline-flex items-center justify-center border border-solid border-white/0 bg-white px-7 py-[1.1rem] font-sans text-[1.1rem] font-semibold uppercase tracking-[0.21rem] text-[#101010] transition-colors duration-300 hover:border-white hover:bg-transparent hover:text-white">
+                {{ block.settings.button_label }}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- else -%}
+        {%- comment -%} fallback when no blocks exist {%- endcomment -%}
+        <div class="swiper-slide relative">
+          <div class="absolute inset-0 overflow-hidden">
+            <img src="{{ 'noble-hero.png' | asset_url }}" alt="" width="2200" height="1228" class="absolute inset-0 w-full h-full object-cover object-top" loading="eager">
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 43%, rgba(0,0,0,0.8) 74.5%);"></div>
+          </div>
+          <div class="noble-hero__content absolute left-1/2 top-1/2 z-[2] flex w-[min(92%,80rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6 text-center">
+            <h2 class="m-0 font-display capitalize text-white leading-[1.05] text-[clamp(3rem,4.4vw,5.4rem)]">Craft that lives in your wardrobe</h2>
+          </div>
+        </div>
+      {%- endfor -%}
     </div>
+
+    {%- if has_slider and section.settings.show_pagination -%}
+      <div class="noble-swiper__pagination"></div>
+    {%- endif -%}
+    {%- if has_slider and section.settings.show_navigation -%}
+      <div class="noble-swiper__nav">
+        <button class="noble-swiper__btn noble-swiper__prev" aria-label="Previous slide" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="noble-swiper__btn noble-swiper__next" aria-label="Next slide" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    {%- endif -%}
   </div>
 
   {%- if section.settings.show_strip -%}
@@ -62,13 +98,37 @@
 {
   "name": "Noble Hero",
   "tag": "section",
+  "max_blocks": 6,
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Background image" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Craft that lives in your wardrobe" },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Explore the capsule" },
-    { "type": "url", "id": "button_link", "label": "Button link" },
-    { "type": "checkbox", "id": "show_strip", "label": "Show patterned strip", "default": true }
+    { "type": "checkbox", "id": "show_strip", "label": "Show patterned strip", "default": true },
+    { "type": "header", "content": "Slider" },
+    { "type": "select", "id": "transition", "label": "Transition", "options": [ { "value": "slide", "label": "Slide" }, { "value": "fade", "label": "Fade" } ], "default": "fade" },
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay", "default": true },
+    { "type": "range", "id": "autoplay_delay", "min": 3, "max": 10, "step": 1, "unit": "s", "label": "Autoplay delay", "default": 6 },
+    { "type": "checkbox", "id": "show_pagination", "label": "Show dots", "default": true },
+    { "type": "checkbox", "id": "show_navigation", "label": "Show arrows", "default": true }
   ],
-  "presets": [{ "name": "Noble Hero" }]
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Background image" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Craft that lives in your wardrobe" },
+        { "type": "text", "id": "button_label", "label": "Button label", "default": "Explore the capsule" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Noble Hero",
+      "blocks": [
+        { "type": "slide", "settings": { "heading": "Craft that lives in your wardrobe", "button_label": "Explore the capsule" } },
+        { "type": "slide", "settings": { "eyebrow": "Soft-launch capsule", "heading": "Made by hands that remember", "button_label": "Know our story" } }
+      ]
+    }
+  ]
 }
 {% endschema %}

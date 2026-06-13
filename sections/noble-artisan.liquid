@@ -3,19 +3,19 @@
   {%- if section.settings.image != blank -%}
     {{ section.settings.image | image_url: width: 2200 | image_tag: class: 'absolute inset-0 w-full h-full object-cover', loading: 'lazy', widths: '900,1400,1800,2200' }}
   {%- else -%}
-    <img src="{{ 'noble-artisan.png' | asset_url }}" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+    <img src="{{ 'noble-artisan.png' | asset_url }}" alt="" width="2200" height="900" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
   {%- endif -%}
   <span class="absolute inset-0" style="background: linear-gradient(179deg, rgba(0,0,0,0.77) 43%, rgba(0,0,0,0) 70%);"></span>
 
-  <div class="relative z-[1] mx-auto flex w-full max-w-canvas flex-col items-start gap-6 px-5 py-16 md:px-8 lg:px-20 lg:py-[12rem]">
+  <div class="relative z-[1] mx-auto flex w-full max-w-canvas flex-col items-start gap-6 px-5 py-16 md:px-8 lg:px-20 lg:py-[12rem]" data-noble-reveal-group="120">
     {%- if section.settings.heading != blank -%}
-      <h2 class="m-0 max-w-[64rem] font-display capitalize text-[clamp(3rem,3.8vw,5.4rem)] leading-[1.05] text-white">{{ section.settings.heading }}</h2>
+      <h2 class="m-0 max-w-[64rem] font-display capitalize text-[clamp(3rem,3.8vw,5.4rem)] leading-[1.05] text-white" data-noble-reveal>{{ section.settings.heading }}</h2>
     {%- endif -%}
     {%- if section.settings.text != blank -%}
-      <p class="m-0 max-w-[48rem] font-gill text-[1.7rem] font-light leading-[1.5] text-[rgba(248,242,229,0.88)]">{{ section.settings.text }}</p>
+      <p class="m-0 max-w-[48rem] font-gill text-[1.7rem] font-light leading-[1.5] text-[rgba(248,242,229,0.88)]" data-noble-reveal>{{ section.settings.text }}</p>
     {%- endif -%}
     {%- if section.settings.button_label != blank -%}
-      <a href="{{ section.settings.button_link | default: '#' }}" class="mt-2 inline-flex items-center justify-center bg-white px-[2.2rem] py-[1.1rem] font-sans text-[0.95rem] font-semibold uppercase tracking-[0.186rem] text-black transition-colors hover:bg-noble-cream">
+      <a href="{{ section.settings.button_link | default: '#' }}" class="mt-2 inline-flex items-center justify-center bg-white px-[2.2rem] py-[1.1rem] font-sans text-[0.95rem] font-semibold uppercase tracking-[0.186rem] text-black transition-colors hover:bg-noble-cream" data-noble-reveal>
         {{ section.settings.button_label }}
       </a>
     {%- endif -%}

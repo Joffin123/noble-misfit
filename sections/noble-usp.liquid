@@ -1,10 +1,11 @@
 {%- comment -%} Noble Misfit — USP bar overlapping a green band (Figma 1:6 / 1:30) {%- endcomment -%}
 <section class="noble-usp bg-noble-bg">
   <div class="h-[5.9rem] bg-noble-green"></div>
-  <div class="mx-auto -mt-[3.7rem] grid max-w-canvas grid-cols-1 bg-white px-4 sm:grid-cols-2 lg:grid-cols-4 lg:px-0">
+  <div class="mx-auto -mt-[3.7rem] grid max-w-canvas grid-cols-1 bg-white px-4 sm:grid-cols-2 lg:grid-cols-4 lg:px-0" data-noble-reveal-group="80">
     {%- for block in section.blocks -%}
       <div
         class="noble-usp__item relative flex min-h-[14.5rem] flex-col justify-center gap-[1rem] px-8 py-[3.4rem]"
+        data-noble-reveal
         {{ block.shopify_attributes }}
       >
         <p class="m-0 max-w-[22rem] font-display text-[1.8rem] leading-[1.25] text-noble-ink">

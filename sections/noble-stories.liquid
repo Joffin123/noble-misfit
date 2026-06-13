@@ -1,7 +1,7 @@
 {%- comment -%} Noble Misfit — "Stories from the loom" grid (Figma 1:702 / 1:905) {%- endcomment -%}
 <section class="noble-stories bg-noble-bg py-16 md:py-[6.4rem]">
   <div class="mx-auto max-w-canvas px-5 md:px-8 lg:px-20">
-    <div class="mb-[4.4rem] flex max-w-[64rem] flex-col gap-[1.4rem]">
+    <div class="mb-[4.4rem] flex max-w-[64rem] flex-col gap-[1.4rem]" data-noble-reveal>
       {%- if section.settings.heading != blank or section.settings.heading_italic != blank -%}
         <h2 class="m-0 text-[clamp(2.6rem,3.4vw,4rem)] leading-[1.1] text-noble-ink">
           <span class="font-display">{{ section.settings.heading }}</span>
@@ -13,11 +13,12 @@
       {%- endif -%}
     </div>
 
-    <div class="flex gap-6 overflow-x-auto pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div class="flex gap-6 overflow-x-auto pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-noble-reveal-group="90">
       {%- for block in section.blocks -%}
         <a
           href="{{ block.settings.link | default: '#' }}"
           class="group relative block flex-none overflow-hidden rounded-[1rem] bg-noble-cream aspect-[302/468] w-[clamp(24rem,21vw,30.2rem)] no-underline"
+          data-noble-reveal
           {{ block.shopify_attributes }}
         >
           {%- if block.settings.image != blank -%}

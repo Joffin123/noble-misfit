@@ -11,10 +11,34 @@
   "sections": {
     "hero": {
       "type": "noble-hero",
+      "blocks": {
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "heading": "Craft that lives in your wardrobe",
+            "button_label": "Explore the capsule"
+          }
+        },
+        "slide2": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Soft-launch capsule",
+            "heading": "Made by hands that remember",
+            "button_label": "Know our story"
+          }
+        }
+      },
+      "block_order": [
+        "slide1",
+        "slide2"
+      ],
       "settings": {
-        "heading": "Craft that lives in your wardrobe",
-        "button_label": "Explore the capsule",
-        "show_strip": true
+        "show_strip": true,
+        "transition": "fade",
+        "autoplay": true,
+        "autoplay_delay": 6,
+        "show_pagination": true,
+        "show_navigation": true
       }
     },
     "usp": {

@@ -1,7 +1,7 @@
 {%- comment -%} Noble Misfit — "Fabric tells a story" Ikat banner (Figma 1:977) {%- endcomment -%}
 <section class="noble-fabric bg-noble-bg py-16 md:py-[6.4rem]">
   <div class="mx-auto max-w-canvas px-5 md:px-8 lg:px-20">
-    <div class="mb-[4.4rem] flex flex-col items-center gap-4 text-center">
+    <div class="mb-[4.4rem] flex flex-col items-center gap-4 text-center" data-noble-reveal>
       {%- if section.settings.heading != blank or section.settings.heading_italic != blank -%}
         <h2 class="m-0 text-[clamp(3rem,4.4vw,5.2rem)] leading-[1.1] text-noble-ink">
           <span class="font-display">{{ section.settings.heading }}</span>
@@ -13,11 +13,11 @@
       {%- endif -%}
     </div>
 
-    <a href="{{ section.settings.link | default: '#' }}" class="relative block min-h-[30rem] overflow-hidden rounded-[1.8rem] aspect-[1159/475]">
+    <a href="{{ section.settings.link | default: '#' }}" class="group relative block min-h-[30rem] overflow-hidden rounded-[1.8rem] aspect-[1159/475]" data-noble-reveal="zoom">
       {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 2000 | image_tag: class: 'absolute inset-0 w-full h-full object-cover', loading: 'lazy', widths: '800,1200,1600,2000' }}
+        {{ section.settings.image | image_url: width: 2000 | image_tag: class: 'absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105', loading: 'lazy', widths: '800,1200,1600,2000' }}
       {%- else -%}
-        <img src="{{ 'noble-fabric-ikat-b.png' | asset_url }}" alt="{{ section.settings.fabric_name | escape }}" width="1600" height="656" class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        <img src="{{ 'noble-fabric-ikat-b.png' | asset_url }}" alt="{{ section.settings.fabric_name | escape }}" width="1600" height="656" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
       {%- endif -%}
       <span class="absolute inset-0" style="background: linear-gradient(246deg, rgba(102,102,102,0) 58%, rgba(0,0,0,0.74) 83%);"></span>
       <span class="absolute z-[1] flex flex-col gap-[1.6rem] left-[clamp(2.4rem,5vw,6rem)] bottom-[clamp(2.4rem,5vw,6rem)]">

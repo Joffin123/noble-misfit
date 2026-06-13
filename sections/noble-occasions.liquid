@@ -1,6 +1,6 @@
 {%- comment -%} Noble Misfit — "Not for occasions" cards (Figma 1:926) {%- endcomment -%}
 <section class="noble-occasions bg-noble-bg py-16 md:py-[6.4rem]">
-  <div class="mx-auto mb-[5.2rem] flex max-w-canvas flex-col items-center gap-3 px-5 text-center">
+  <div class="mx-auto mb-[5.2rem] flex max-w-canvas flex-col items-center gap-3 px-5 text-center" data-noble-reveal>
     {%- if section.settings.heading != blank -%}
       <h2 class="m-0 font-display text-[clamp(3rem,4.5vw,5.2rem)] leading-[1.1] text-noble-ink">{{ section.settings.heading }}</h2>
     {%- endif -%}
@@ -12,11 +12,12 @@
     {%- endif -%}
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" data-noble-reveal-group="110">
     {%- for block in section.blocks -%}
       <a
         href="{{ block.settings.link | default: '#' }}"
         class="noble-occasions__card group relative block overflow-hidden bg-noble-cream aspect-[4/5] lg:aspect-[333.5/444.66]"
+        data-noble-reveal
         {{ block.shopify_attributes }}
       >
         {%- if block.settings.image != blank -%}
@@ -39,8 +40,8 @@
   </div>
 
   {%- if section.settings.cta_label != blank -%}
-    <div class="mt-[4.8rem] flex justify-center">
-      <a href="{{ section.settings.cta_link | default: '#' }}" class="inline-block border-b border-noble-gold-light pb-[0.5rem] font-gill text-[1.2rem] font-semibold uppercase tracking-[0.2rem] text-noble-ink transition-colors hover:text-noble-terracotta">
+    <div class="mt-[4.8rem] flex justify-center" data-noble-reveal>
+      <a href="{{ section.settings.cta_link | default: '#' }}" class="inline-block border-b border-solid border-noble-gold-light pb-[0.5rem] font-gill text-[1.2rem] font-semibold uppercase tracking-[0.2rem] text-noble-ink transition-colors hover:text-noble-terracotta">
         {{ section.settings.cta_label }}
       </a>
     </div>

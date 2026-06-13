@@ -260,44 +260,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Tenor+Sans&display=swap" rel="stylesheet">
 
-    {% comment %} Tailwind CSS (Play CDN). preflight disabled so it never resets Dawn's pages. {% endcomment %}
-    {% comment %}theme-check-disable ParserBlockingScript,RemoteAsset{% endcomment %}
-    <script src="https://cdn.tailwindcss.com"></script>
-    {% comment %}theme-check-enable ParserBlockingScript,RemoteAsset{% endcomment %}
-    <script>
-      tailwind.config = {
-        corePlugins: { preflight: false },
-        theme: {
-          extend: {
-            colors: {
-              'noble-green': '#174032',
-              'noble-green-soft': '#1f5945',
-              'noble-ink': '#1a2942',
-              'noble-terracotta': '#a4422c',
-              'noble-terracotta-soft': '#a8542f',
-              'noble-gold': '#c89b3c',
-              'noble-gold-light': '#d9b25f',
-              'noble-cream': '#e8dfc9',
-              'noble-bg': '#f7f4ee',
-              'noble-offwhite': '#f7f3f2',
-              'noble-paper': '#f6f4f1',
-              'noble-muted': '#8a8475',
-              'noble-slate': '#4f5a6f',
-            },
-            fontFamily: {
-              display: ['Tenor Sans', 'Optima', 'Gill Sans', 'sans-serif'],
-              serifit: ['Times New Roman', 'Georgia', 'serif'],
-              sans: ['Manrope', 'Segoe UI', 'Helvetica', 'sans-serif'],
-              gill: ['Gill Sans', 'Gill Sans MT', 'Manrope', 'sans-serif'],
-            },
-            maxWidth: { canvas: '1440px' },
-          },
-        },
-      };
-    </script>
+    {% comment %} Compiled Tailwind v4 (preflight excluded — see tailwind/input.css). Rebuild with `npm run build:css`. {% endcomment %}
+    {{ 'noble-tailwind.css' | asset_url | stylesheet_tag }}
+
+    {% comment %} Swiper (sliders) used by noble-hero and any slider-enabled section {% endcomment %}
+    {{ 'noble-swiper.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'noble-swiper.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'noble-sliders.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'noble-reveal.js' | asset_url }}" defer="defer"></script>
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'noble-theme.css' | asset_url | stylesheet_tag }}
+    {{ 'noble-animations.css' | asset_url | stylesheet_tag }}
+    <noscript><style>[data-noble-reveal]{opacity:1 !important;transform:none !important;}</style></noscript>
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}

@@ -7,7 +7,7 @@
 -%}
 <section class="noble-circles bg-noble-bg py-16 md:py-[6.4rem]">
   <div class="mx-auto max-w-canvas px-5 md:px-8 lg:px-20">
-    <div class="mb-10 flex flex-col gap-3">
+    <div class="mb-10 flex flex-col gap-3" data-noble-reveal>
       {%- if section.settings.heading != blank -%}
         <h2 class="m-0 font-display text-[clamp(2.4rem,3vw,3.6rem)] leading-[1.1] text-noble-ink">{{ section.settings.heading }}</h2>
       {%- endif -%}
@@ -16,7 +16,7 @@
       {%- endif -%}
     </div>
 
-    <div class="flex items-end gap-5 overflow-x-auto pb-4 md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div class="flex items-end gap-5 overflow-x-auto pb-4 md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" data-noble-reveal-group="80">
       {%- for block in section.blocks -%}
         {%- liquid
           assign img = block.settings.image
@@ -33,6 +33,7 @@
         <a
           href="{{ block.settings.link | default: '#' }}"
           class="group flex flex-none flex-col items-center gap-[1.4rem] no-underline"
+          data-noble-reveal="zoom"
           {{ block.shopify_attributes }}
         >
           <span class="relative overflow-hidden bg-[linear-gradient(160deg,#dcd7cd,#cfc9bd)] transition-transform duration-300 group-hover:-translate-y-2 {{ shape_cls }}">
