@@ -1,0 +1,72 @@
+{%- comment -%} Noble Misfit — hero banner (Figma 1:3 / 1:5) {%- endcomment -%}
+<section class="noble-hero noble-hero--overlay-header relative">
+  <div class="relative overflow-hidden h-[78svh] max-h-[64rem] md:h-[56vw] md:max-h-[80.4rem]">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2200
+        | image_tag:
+          class: 'absolute inset-0 w-full h-full object-cover object-top',
+          loading: 'eager',
+          fetchpriority: 'high',
+          sizes: '100vw',
+          widths: '750, 1100, 1500, 2000, 2200'
+      }}
+    {%- else -%}
+      <img
+        src="{{ 'noble-hero.png' | asset_url }}"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover object-top"
+        loading="eager"
+      >
+    {%- endif -%}
+
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to bottom, rgba(0,0,0,0) 43%, rgba(0,0,0,0.8) 74.5%);"
+    ></div>
+
+    <div class="absolute left-1/2 top-1/2 z-[1] flex w-[min(92%,80rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6 text-center">
+      {%- if section.settings.heading != blank -%}
+        <h1 class="m-0 font-display capitalize text-white leading-[1.05] text-[clamp(3rem,4.4vw,5.4rem)]">
+          {{ section.settings.heading }}
+        </h1>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a
+          href="{{ section.settings.button_link | default: '#' }}"
+          class="inline-flex items-center justify-center border border-white/0 bg-white px-7 py-[1.1rem] font-sans text-[1.1rem] font-semibold uppercase tracking-[0.21rem] text-[#101010] transition-colors duration-300 hover:border-white hover:bg-transparent hover:text-white"
+        >
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if section.settings.show_strip -%}
+    <div class="noble-hero__strip h-[5.9rem] bg-noble-green"></div>
+  {%- endif -%}
+</section>
+
+{% style %}
+  #shopify-section-{{ section.id }} .noble-hero__strip {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='59' viewBox='0 0 112 59'%3E%3Cg fill='none' stroke='%23e8dfc9' stroke-opacity='0.4' stroke-width='1'%3E%3Cpath d='M28 17l12 12.5L28 42 16 29.5z'/%3E%3Cpath d='M73 19l19 21M92 19L73 40'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Noble Hero",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Craft that lives in your wardrobe" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Explore the capsule" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "checkbox", "id": "show_strip", "label": "Show patterned strip", "default": true }
+  ],
+  "presets": [{ "name": "Noble Hero" }]
+}
+{% endschema %}
