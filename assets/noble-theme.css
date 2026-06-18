@@ -215,50 +215,48 @@ button.shopify-payment-button__button--unbranded {
 
 /* ---------- mobile header fixes ---------- */
 @media screen and (max-width: 749px) {
-  /* Replace Dawn's grid (which lets the icons column overrun its fr share)
-     with a simple flexbox row: hamburger | logo (grows) | icons */
+  /*
+   * Replace Dawn's 1fr 2fr 1fr grid with a flex row.
+   * Padding matches cart's margin-right: -1.2rem bleed so no overflow.
+   * header-drawer keeps its margin-left: -1.2rem (set in header.liquid <style>)
+   * so the hamburger sits flush with the left edge inside the padding zone.
+   */
   .header {
     display: flex !important;
     flex-direction: row;
     align-items: center;
     flex-wrap: nowrap;
-    padding-left: 0.8rem !important;
-    padding-right: 0.8rem !important;
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
     box-sizing: border-box;
-    width: 100%;
   }
 
-  /* Hamburger takes its natural size */
-  .header header-drawer {
-    flex: 0 0 auto;
-    margin-left: 0 !important;
-  }
-
-  /* Logo area stretches to fill the middle */
+  /* Logo column (middle-center uses h1.header__heading wrapper on homepage,
+     plain a.header__heading-link on all other pages) */
   .header .header__heading,
-  .header > .header__heading-link {
+  .header .header__heading-link {
     flex: 1 1 auto;
+    min-width: 0;
     text-align: center !important;
     justify-self: unset;
-    min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 0.4rem;
   }
 
-  /* Icons stay at their natural size on the right */
+  /* Icons right-flush (cart's -1.2rem margin absorbs the padding) */
   .header .header__icons {
     flex: 0 0 auto;
     padding-right: 0;
   }
 
-  /* SVG mask logo: override inline style="--noble-logo-w:9.6rem" */
+  /* SVG mask logo: inline style="--noble-logo-w:9.6rem" wins over variables,
+     so target width directly with !important */
   .header__heading-link .noble-logo {
     width: 5.6rem !important;
   }
 
-  /* Image logo (if one is uploaded in admin) */
+  /* Uploaded image logo */
   .header__heading-logo-wrapper {
     max-width: 7rem;
   }
@@ -268,17 +266,17 @@ button.shopify-payment-button__button--unbranded {
     display: block;
   }
 
-  /* Slightly smaller icons */
+  /* Slightly smaller touch icons to free space */
   .header__icon .svg-wrapper svg,
   .header__icon--search .svg-wrapper svg {
     width: 1.8rem;
     height: 1.8rem;
   }
+}
 
-  /* Hard stop — no horizontal scrollbar from header */
-  .header-wrapper {
-    overflow-x: clip;
-  }
+/* Catch any residual horizontal overflow site-wide */
+body {
+  overflow-x: hidden;
 }
 
 /* Overlay header — fixed so it never shifts document flow (no scroll jerk) */
