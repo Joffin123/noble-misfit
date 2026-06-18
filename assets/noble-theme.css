@@ -213,6 +213,35 @@ button.shopify-payment-button__button--unbranded {
   height: 1.9rem;
 }
 
+/* ---------- mobile header fixes ---------- */
+@media screen and (max-width: 749px) {
+  /* Reduce side padding so logo has breathing room */
+  .header {
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+  }
+  /* Cap logo image width */
+  .header__heading-logo-wrapper {
+    max-width: 7.5rem;
+    overflow: hidden;
+  }
+  .header__heading-logo-wrapper img {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
+  }
+  /* Scale down SVG mask logo */
+  .header__heading-link .noble-logo {
+    --noble-logo-w: 6rem;
+  }
+  /* Slightly smaller icons on mobile to free up space */
+  .header__icon .svg-wrapper svg,
+  .header__icon--search .svg-wrapper svg {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+}
+
 /* Overlay header — fixed so it never shifts document flow (no scroll jerk) */
 body:has(.noble-hero--overlay-header) .section-header {
   position: fixed;
