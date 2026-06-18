@@ -213,26 +213,30 @@ button.shopify-payment-button__button--unbranded {
   height: 1.9rem;
 }
 
-/* Transparent header floating over the homepage hero */
-body:has(.noble-hero--overlay-header) .section-header:not(.shopify-section-header-sticky) {
-  position: absolute;
+/* Overlay header — fixed so it never shifts document flow (no scroll jerk) */
+body:has(.noble-hero--overlay-header) .section-header {
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 4;
+  z-index: 100;
   margin-bottom: 0;
 }
-body:has(.noble-hero--overlay-header) .section-header:not(.shopify-section-header-sticky) .header-wrapper {
+/* Prevent Dawn's `position:sticky` from overriding our fixed during scroll events */
+body:has(.noble-hero--overlay-header) .section-header.shopify-section-header-sticky {
+  position: fixed !important;
+}
+/* Transparent by default */
+body:has(.noble-hero--overlay-header) .section-header .header-wrapper,
+body:has(.noble-hero--overlay-header) .section-header .header-wrapper--border-bottom {
   background: transparent;
   border-bottom: 0;
 }
-body:has(.noble-hero--overlay-header) .section-header:not(.shopify-section-header-sticky) .header-wrapper--border-bottom {
-  border-bottom: 0;
-}
+/* Green background once scrolled past hero */
 body:has(.noble-hero--overlay-header) .section-header.shopify-section-header-sticky .header-wrapper {
   background: var(--noble-green);
-  border-bottom: 0;
 }
+/* Always white text (readable on both transparent hero + dark green bg) */
 body:has(.noble-hero--overlay-header) .section-header .header__menu-item span,
 body:has(.noble-hero--overlay-header) .section-header .header__heading-link,
 body:has(.noble-hero--overlay-header) .section-header .header__heading {
@@ -241,12 +245,57 @@ body:has(.noble-hero--overlay-header) .section-header .header__heading {
 body:has(.noble-hero--overlay-header) .section-header .header__icon {
   color: #ffffff;
 }
-body:has(.noble-hero--overlay-header) .section-header .header__icon .icon {
-  color: #ffffff;
-}
 body:has(.noble-hero--overlay-header) .section-header .cart-count-bubble {
   background-color: var(--noble-gold-light);
   color: var(--noble-green);
+}
+
+/* ---------- hero components ---------- */
+.noble-hero__overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05) 0%,
+    rgba(0,0,0,0)    25%,
+    rgba(0,0,0,0.65) 62%,
+    rgba(0,0,0,0.88) 100%
+  );
+}
+
+.noble-hero__heading {
+  color: var(--h-color, #ffffff);
+  font-size: var(--h-size-mob, 36px);
+  line-height: 1.1;
+  text-align: var(--h-align-mob, center);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+@media (min-width: 990px) {
+  .noble-hero__heading {
+    font-size: var(--h-size-desk, 54px);
+    line-height: var(--h-size-desk, 54px);
+    text-align: var(--h-align-desk, right);
+  }
+}
+
+.noble-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Gill Sans", "Gill Sans MT", var(--noble-font-gill);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 13.962px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0.776px solid rgba(0, 0, 0, 0);
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.noble-hero__cta:hover {
+  opacity: 0.82;
+  transform: translateY(-2px);
 }
 
 /* ---------- mobile menu drawer (hamburger sidebar) ---------- */
