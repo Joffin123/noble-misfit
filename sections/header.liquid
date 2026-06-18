@@ -94,6 +94,57 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  /* ── Mobile header: flex row so logo never overflows ── */
+  @media screen and (max-width: 749px) {
+    .section-header .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: nowrap;
+      /* 1.2rem matches cart's margin-right: -1.2rem — zero net overflow */
+      padding-left: 1.2rem;
+      padding-right: 1.2rem;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    /* header-drawer keeps its margin-left: -1.2rem from the <style> block above,
+       making the hamburger flush with the left viewport edge */
+
+    /* Logo cell: take all remaining space, center content */
+    .section-header .header .header__heading,
+    .section-header .header .header__heading-link {
+      flex: 1 1 auto;
+      min-width: 0;
+      text-align: center;
+      justify-self: unset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Icons: shrink to content */
+    .section-header .header .header__icons {
+      flex: 0 0 auto;
+      padding-right: 0;
+    }
+
+    /* SVG mask logo size — higher specificity beats the inline style="--noble-logo-w:9.6rem" */
+    .section-header .header .header__heading-link .noble-logo,
+    .section-header .header > .header__heading-link .noble-logo {
+      width: 5.6rem;
+    }
+
+    /* Image logo (if uploaded) */
+    .section-header .header .header__heading-logo-wrapper {
+      max-width: 7rem;
+    }
+    .section-header .header .header__heading-logo-wrapper img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
@@ -271,11 +322,7 @@
       {%- endfor -%}
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-          {% if cart == empty %}
-            <span class="svg-wrapper">{{'icon-cart-empty.svg' | inline_asset_content }}</span>
-          {% else %}
-            <span class="svg-wrapper">{{'icon-cart.svg' | inline_asset_content }}</span>
-          {% endif %}
+          <span class="svg-wrapper">{{ 'noble-icon-cart.svg' | inline_asset_content }}</span>
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
           <div class="cart-count-bubble">
