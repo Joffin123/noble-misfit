@@ -230,9 +230,10 @@ button.shopify-payment-button__button--unbranded {
     height: auto !important;
     display: block;
   }
-  /* Scale down SVG mask logo */
+  /* Scale down SVG mask logo — use width directly because the inline style
+     attribute sets --noble-logo-w: 9.6rem and beats a class-level variable */
   .header__heading-link .noble-logo {
-    --noble-logo-w: 6rem;
+    width: 5.6rem !important;
   }
   /* Slightly smaller icons on mobile to free up space */
   .header__icon .svg-wrapper svg,
