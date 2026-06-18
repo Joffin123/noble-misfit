@@ -215,41 +215,67 @@ button.shopify-payment-button__button--unbranded {
 
 /* ---------- mobile header fixes ---------- */
 @media screen and (max-width: 749px) {
-  /* Switch from Dawn's 1fr 2fr 1fr (which lets icon column overflow its share)
-     to auto 1fr auto so each side takes exactly its content width */
+  /* Replace Dawn's grid (which lets the icons column overrun its fr share)
+     with a simple flexbox row: hamburger | logo (grows) | icons */
   .header {
-    grid-template-columns: auto 1fr auto !important;
-    padding-left: 1.2rem !important;
-    padding-right: 1.2rem !important;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+    box-sizing: border-box;
+    width: 100%;
   }
-  /* Prevent heading cell from growing wider than available space */
-  .header__heading,
-  .header__heading-link {
+
+  /* Hamburger takes its natural size */
+  .header header-drawer {
+    flex: 0 0 auto;
+    margin-left: 0 !important;
+  }
+
+  /* Logo area stretches to fill the middle */
+  .header .header__heading,
+  .header > .header__heading-link {
+    flex: 1 1 auto;
+    text-align: center !important;
+    justify-self: unset;
     min-width: 0;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.4rem;
   }
-  /* Cap image logo */
+
+  /* Icons stay at their natural size on the right */
+  .header .header__icons {
+    flex: 0 0 auto;
+    padding-right: 0;
+  }
+
+  /* SVG mask logo: override inline style="--noble-logo-w:9.6rem" */
+  .header__heading-link .noble-logo {
+    width: 5.6rem !important;
+  }
+
+  /* Image logo (if one is uploaded in admin) */
   .header__heading-logo-wrapper {
-    max-width: 8rem;
-    overflow: hidden;
+    max-width: 7rem;
   }
   .header__heading-logo-wrapper img {
     max-width: 100%;
     height: auto !important;
     display: block;
   }
-  /* SVG mask logo: override inline style="--noble-logo-w:9.6rem" with width directly */
-  .header__heading-link .noble-logo {
-    width: 5.6rem !important;
-    max-width: 100%;
-  }
-  /* Slightly smaller icons to save space */
+
+  /* Slightly smaller icons */
   .header__icon .svg-wrapper svg,
   .header__icon--search .svg-wrapper svg {
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
-  /* Prevent any icon or heading child from breaking the row wider than the header */
+
+  /* Hard stop — no horizontal scrollbar from header */
   .header-wrapper {
     overflow-x: clip;
   }
