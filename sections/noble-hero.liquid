@@ -35,10 +35,10 @@
             {%- else -%}
               <img src="{{ 'noble-hero.png' | asset_url }}" alt="" width="2200" height="1228" class="absolute inset-0 w-full h-full object-cover object-top" loading="eager">
             {%- endif -%}
-            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 43%, rgba(0,0,0,0.8) 74.5%);"></div>
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0.65) 62%, rgba(0,0,0,0.88) 100%);"></div>
           </div>
 
-          <div class="noble-hero__content absolute left-1/2 top-1/2 z-[2] flex w-[min(92%,80rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6 text-center">
+          <div class="noble-hero__content absolute left-1/2 bottom-[16%] z-[2] flex w-[min(92%,80rem)] -translate-x-1/2 flex-col items-center gap-6 text-center">
             {%- if block.settings.eyebrow != blank -%}
               <span class="font-sans text-[1.1rem] font-semibold uppercase tracking-[0.3rem] text-noble-gold-light">{{ block.settings.eyebrow }}</span>
             {%- endif -%}
@@ -57,9 +57,9 @@
         <div class="swiper-slide relative">
           <div class="absolute inset-0 overflow-hidden">
             <img src="{{ 'noble-hero.png' | asset_url }}" alt="" width="2200" height="1228" class="absolute inset-0 w-full h-full object-cover object-top" loading="eager">
-            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0) 43%, rgba(0,0,0,0.8) 74.5%);"></div>
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0.65) 62%, rgba(0,0,0,0.88) 100%);"></div>
           </div>
-          <div class="noble-hero__content absolute left-1/2 top-1/2 z-[2] flex w-[min(92%,80rem)] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6 text-center">
+          <div class="noble-hero__content absolute left-1/2 bottom-[16%] z-[2] flex w-[min(92%,80rem)] -translate-x-1/2 flex-col items-center gap-6 text-center">
             <h2 class="m-0 font-display capitalize text-white leading-[1.05] text-[clamp(3rem,4.4vw,5.4rem)]">Craft that lives in your wardrobe</h2>
           </div>
         </div>
