@@ -215,14 +215,22 @@ button.shopify-payment-button__button--unbranded {
 
 /* ---------- mobile header fixes ---------- */
 @media screen and (max-width: 749px) {
-  /* Reduce side padding so logo has breathing room */
+  /* Switch from Dawn's 1fr 2fr 1fr (which lets icon column overflow its share)
+     to auto 1fr auto so each side takes exactly its content width */
   .header {
+    grid-template-columns: auto 1fr auto !important;
     padding-left: 1.2rem !important;
     padding-right: 1.2rem !important;
   }
-  /* Cap logo image width */
+  /* Prevent heading cell from growing wider than available space */
+  .header__heading,
+  .header__heading-link {
+    min-width: 0;
+    overflow: hidden;
+  }
+  /* Cap image logo */
   .header__heading-logo-wrapper {
-    max-width: 7.5rem;
+    max-width: 8rem;
     overflow: hidden;
   }
   .header__heading-logo-wrapper img {
@@ -230,16 +238,20 @@ button.shopify-payment-button__button--unbranded {
     height: auto !important;
     display: block;
   }
-  /* Scale down SVG mask logo — use width directly because the inline style
-     attribute sets --noble-logo-w: 9.6rem and beats a class-level variable */
+  /* SVG mask logo: override inline style="--noble-logo-w:9.6rem" with width directly */
   .header__heading-link .noble-logo {
     width: 5.6rem !important;
+    max-width: 100%;
   }
-  /* Slightly smaller icons on mobile to free up space */
+  /* Slightly smaller icons to save space */
   .header__icon .svg-wrapper svg,
   .header__icon--search .svg-wrapper svg {
     width: 1.7rem;
     height: 1.7rem;
+  }
+  /* Prevent any icon or heading child from breaking the row wider than the header */
+  .header-wrapper {
+    overflow-x: clip;
   }
 }
 
