@@ -208,6 +208,8 @@ body:has(.noble-hero--overlay-header) .section-header {
 @media (prefers-reduced-motion: reduce) {
   [data-noble-reveal],
   .noble-hero__content > *,
+  .noble-hero__img,
+  .section-header,
   .card-wrapper,
   .card__media img,
   .noble-btn,
