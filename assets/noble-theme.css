@@ -1,0 +1,331 @@
+/* ============================================================
+   NOBLE MISFIT — global brand layer
+   Loaded after base.css; overrides Dawn variables + components.
+   Palette / type taken from Figma (node 1:2).
+   ============================================================ */
+
+:root {
+  --noble-green: #174032;
+  --noble-green-soft: #1f5945;
+  --noble-ink: #1a2942;
+  --noble-terracotta: #a4422c;
+  --noble-terracotta-soft: #a8542f;
+  --noble-gold: #c89b3c;
+  --noble-gold-light: #d9b25f;
+  --noble-cream: #e8dfc9;
+  --noble-bg: #f7f4ee;
+  --noble-offwhite: #f7f3f2;
+  --noble-paper: #f6f4f1;
+  --noble-muted: #8a8475;
+  --noble-slate: #4f5a6f;
+
+  --noble-font-display: Optima, 'Tenor Sans', 'Gill Sans', 'Gill Sans MT', 'Century Gothic', sans-serif;
+  --noble-font-serif-italic: 'Times New Roman', Times, Georgia, serif;
+  --noble-font-sans: Manrope, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --noble-font-gill: 'Gill Sans', 'Gill Sans MT', Manrope, 'Trebuchet MS', sans-serif;
+
+  /* Dawn variable overrides — cascade to every template */
+  --font-heading-family: var(--noble-font-display);
+  --font-heading-style: normal;
+  --font-heading-weight: 400;
+  --font-body-family: var(--noble-font-gill);
+  --font-body-style: normal;
+  --font-body-weight: 400;
+  --font-body-weight-bold: 600;
+}
+
+body {
+  letter-spacing: 0.02rem;
+}
+
+h1, h2, h3, h4, h5,
+.h0, .h1, .h2, .h3, .h4, .h5 {
+  letter-spacing: -0.02em;
+  color: rgb(var(--color-foreground));
+}
+
+/* ---------- page width: design canvas is 1440px with 80px gutters ---------- */
+@media screen and (min-width: 990px) {
+  .page-width {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+/* ---------- buttons & inputs ---------- */
+.button,
+.shopify-challenge__button,
+.customer button,
+button.shopify-payment-button__button--unbranded {
+  font-family: var(--noble-font-sans);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
+
+/* ---------- noble shared components (used by custom sections) ---------- */
+.noble-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.4rem 2.8rem;
+  font-family: var(--noble-font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.21rem;
+  line-height: 1.3;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.noble-btn--light {
+  background: #ffffff;
+  color: #101010;
+}
+.noble-btn--light:hover {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
+}
+.noble-btn--outline-light {
+  border-color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+  background: transparent;
+}
+.noble-btn--outline-light:hover {
+  background: #ffffff;
+  color: #101010;
+}
+.noble-btn--outline-dark {
+  border-color: var(--noble-ink);
+  color: var(--noble-ink);
+  background: transparent;
+}
+.noble-btn--outline-dark:hover {
+  background: var(--noble-green);
+  border-color: var(--noble-green);
+  color: var(--noble-offwhite);
+}
+
+.noble-link-underline {
+  display: inline-block;
+  font-family: var(--noble-font-gill);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--noble-ink);
+  border-bottom: 1px solid var(--noble-gold-light);
+  padding-bottom: 0.5rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.noble-link-underline:hover {
+  color: var(--noble-terracotta);
+}
+.noble-link-underline--light {
+  color: var(--noble-offwhite);
+}
+.noble-link-underline--light:hover {
+  color: var(--noble-gold-light);
+}
+
+.noble-heading {
+  margin: 0;
+  font-family: var(--noble-font-display);
+  font-size: clamp(3rem, 4.5vw, 5.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.12rem;
+  color: var(--noble-ink);
+}
+.noble-heading em {
+  font-family: var(--noble-font-serif-italic);
+  font-style: italic;
+  letter-spacing: -0.2rem;
+}
+.noble-subtext {
+  margin: 0;
+  font-family: var(--noble-font-gill);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 1.6vw, 2rem);
+  line-height: 1.4;
+  color: var(--noble-slate);
+}
+
+/* ---------- logo (stacked wordmark, colored via currentColor) ---------- */
+.noble-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  width: var(--noble-logo-w, 7.7rem);
+  color: inherit;
+}
+.noble-logo__line {
+  display: block;
+  width: 100%;
+  background-color: currentColor;
+  -webkit-mask: var(--noble-logo-mask) center / contain no-repeat;
+  mask: var(--noble-logo-mask) center / contain no-repeat;
+}
+.noble-logo__line--top {
+  --noble-logo-mask: url('noble-logo-top.svg');
+  aspect-ratio: 76.886 / 16.28;
+}
+.noble-logo__line--bottom {
+  --noble-logo-mask: url('noble-logo-bottom.svg');
+  aspect-ratio: 76.967 / 22.519;
+}
+
+/* ---------- header ---------- */
+.header-wrapper {
+  background: rgb(var(--color-background));
+  transition: background-color 0.45s ease, border-color 0.45s ease;
+}
+.header__heading-link .h2 {
+  color: rgb(var(--color-foreground));
+}
+.header__menu-item span {
+  font-family: var(--noble-font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+}
+.header__menu-item:hover span {
+  text-decoration: none;
+  text-underline-offset: 0.4rem;
+}
+
+/* Noble custom icons — consistent sizing */
+.header__icon .svg-wrapper svg {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+}
+.header__icon--search .svg-wrapper svg {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+/* Transparent header floating over the homepage hero */
+body:has(.noble-hero--overlay-header) .section-header:not(.shopify-section-header-sticky) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  margin-bottom: 0;
+}
+body:has(.noble-hero--overlay-header) .section-header:not(.shopify-section-header-sticky) .header-wrapper {
+  background: transparent;
+  border-bottom: 0;
+}
+body:has(.noble-hero--overlay-header) .section-header:not(.shopify-section-header-sticky) .header-wrapper--border-bottom {
+  border-bottom: 0;
+}
+body:has(.noble-hero--overlay-header) .section-header.shopify-section-header-sticky .header-wrapper {
+  background: var(--noble-green);
+  border-bottom: 0;
+}
+body:has(.noble-hero--overlay-header) .section-header .header__menu-item span,
+body:has(.noble-hero--overlay-header) .section-header .header__heading-link,
+body:has(.noble-hero--overlay-header) .section-header .header__heading {
+  color: #ffffff;
+}
+body:has(.noble-hero--overlay-header) .section-header .header__icon {
+  color: #ffffff;
+}
+body:has(.noble-hero--overlay-header) .section-header .header__icon .icon {
+  color: #ffffff;
+}
+body:has(.noble-hero--overlay-header) .section-header .cart-count-bubble {
+  background-color: var(--noble-gold-light);
+  color: var(--noble-green);
+}
+
+/* ---------- mobile menu drawer (hamburger sidebar) ---------- */
+.menu-drawer {
+  background-color: var(--noble-green);
+}
+.menu-drawer__navigation .menu-drawer__menu-item {
+  font-family: var(--noble-font-sans);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  color: var(--noble-paper);
+}
+.menu-drawer__menu-item:hover,
+.menu-drawer__menu-item--active {
+  color: var(--noble-gold-light) !important;
+}
+.menu-drawer__utility-links {
+  background-color: rgba(0, 0, 0, 0.18);
+}
+.menu-drawer__account,
+.menu-drawer__utility-links a {
+  color: var(--noble-paper);
+}
+.menu-drawer .icon-arrow,
+.menu-drawer__menu-item .svg-wrapper {
+  color: var(--noble-paper);
+}
+.js .menu-drawer__navigation .submenu-open .menu-drawer__submenu {
+  background-color: var(--noble-green);
+}
+.menu-drawer__close-button {
+  color: var(--noble-paper);
+}
+
+/* ---------- product cards (collection / featured grids on all pages) ---------- */
+.card__heading {
+  font-family: var(--noble-font-display);
+  font-weight: 400;
+  text-transform: capitalize;
+  color: var(--noble-ink);
+  font-size: 1.8rem;
+  line-height: 1.15;
+}
+.card-information .price {
+  font-family: var(--noble-font-gill);
+  color: var(--noble-ink);
+  font-size: 1.4rem;
+}
+.card--standard .card__inner .card__media {
+  background: var(--noble-cream);
+}
+.badge {
+  font-family: var(--noble-font-sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.162rem;
+  text-transform: uppercase;
+  border: 0;
+}
+
+/* ---------- footer fallback styling ---------- */
+.footer {
+  border-top: 0;
+}
+
+/* ---------- misc polish ---------- */
+.field__input,
+.select__select,
+.customer .field input,
+.customer select {
+  font-family: var(--noble-font-gill);
+}
+.price {
+  font-family: var(--noble-font-gill);
+}
+.product__title h1 {
+  font-family: var(--noble-font-display);
+  text-transform: capitalize;
+  letter-spacing: -0.05em;
+}
