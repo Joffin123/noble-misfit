@@ -15,16 +15,19 @@
         "slide1": {
           "type": "slide",
           "settings": {
+            "eyebrow": "",
             "heading": "Craft that lives in your wardrobe",
-            "button_label": "Explore the capsule"
+            "button_label": "Shop the collection",
+            "button_link": ""
           }
         },
         "slide2": {
           "type": "slide",
           "settings": {
-            "eyebrow": "Soft-launch capsule",
-            "heading": "Made by hands that remember",
-            "button_label": "Know our story"
+            "eyebrow": "",
+            "heading": "Craft that lives in your wardrobe",
+            "button_label": "Shop the collection",
+            "button_link": ""
           }
         }
       },
@@ -47,25 +50,25 @@
         "u1": {
           "type": "item",
           "settings": {
-            "text_before": "Took ",
+            "text_before": "Took",
             "accent": "14 days",
-            "text_after": " to craft six metres of fabric.",
+            "text_after": "to craft six metres of fabric.",
             "subtext": "Hand-printed Ajrakh, traditional methods."
           }
         },
         "u2": {
           "type": "item",
           "settings": {
-            "text_before": "Solves ",
+            "text_before": "Solves",
             "accent": "what to wear",
-            "text_after": " on a Monday.",
+            "text_after": "on a Monday.",
             "subtext": "Everyday silhouettes. Not occasion-only."
           }
         },
         "u3": {
           "type": "item",
           "settings": {
-            "text_before": "Mixes with the wardrobe ",
+            "text_before": "Mixes with the wardrobe",
             "accent": "you already own.",
             "text_after": "",
             "subtext": "Pair with a white tee. With a blazer."
@@ -74,9 +77,9 @@
         "u4": {
           "type": "item",
           "settings": {
-            "text_before": "Pieces that ",
+            "text_before": "Pieces that",
             "accent": "express",
-            "text_after": " — not impress.",
+            "text_after": "— not impress.",
             "subtext": "Wear your roots. On your own terms."
           }
         }
@@ -97,6 +100,7 @@
           "settings": {
             "label": "Mon",
             "default_asset": "noble-cat-tops.png",
+            "link": "",
             "active": true
           }
         },
@@ -104,42 +108,54 @@
           "type": "item",
           "settings": {
             "label": "Tue",
-            "default_asset": "noble-cat-skirts.png"
+            "default_asset": "noble-cat-skirts.png",
+            "link": "",
+            "active": false
           }
         },
         "d3": {
           "type": "item",
           "settings": {
             "label": "Wed",
-            "default_asset": "noble-cat-dresses.png"
+            "default_asset": "noble-cat-dresses.png",
+            "link": "",
+            "active": false
           }
         },
         "d4": {
           "type": "item",
           "settings": {
             "label": "Thur",
-            "default_asset": "noble-cat-coords.png"
+            "default_asset": "noble-cat-coords.png",
+            "link": "",
+            "active": false
           }
         },
         "d5": {
           "type": "item",
           "settings": {
             "label": "Fri",
-            "default_asset": "noble-occasion-work.png"
+            "default_asset": "noble-occasion-work.png",
+            "link": "",
+            "active": false
           }
         },
         "d6": {
           "type": "item",
           "settings": {
             "label": "Sat",
-            "default_asset": "noble-occasion-brunch.png"
+            "default_asset": "noble-occasion-brunch.png",
+            "link": "",
+            "active": false
           }
         },
         "d7": {
           "type": "item",
           "settings": {
             "label": "Sun",
-            "default_asset": "noble-occasion-evening.png"
+            "default_asset": "noble-occasion-evening.png",
+            "link": "",
+            "active": false
           }
         }
       },
@@ -154,6 +170,7 @@
       ],
       "settings": {
         "heading": "Shop by day",
+        "subheading": "",
         "shape": "oval"
       }
     },
@@ -165,7 +182,9 @@
           "settings": {
             "title": "Work",
             "text": "Structured silhouettes. Craft as detail, not statement.",
-            "default_asset": "noble-occasion-work.png"
+            "default_asset": "noble-occasion-work.png",
+            "link_label": "",
+            "link": ""
           }
         },
         "o2": {
@@ -174,7 +193,8 @@
             "title": "Brunch",
             "text": "Relaxed but considered. Print-forward. Loafers or sandals.",
             "default_asset": "noble-occasion-brunch.png",
-            "link_label": "Shop the look →"
+            "link_label": "Shop the look →",
+            "link": ""
           }
         },
         "o3": {
@@ -182,7 +202,9 @@
           "settings": {
             "title": "Evening",
             "text": "Drapey, moody, heirloom energy. The Ajrakh story does the work.",
-            "default_asset": "noble-occasion-evening.png"
+            "default_asset": "noble-occasion-evening.png",
+            "link_label": "",
+            "link": ""
           }
         },
         "o4": {
@@ -190,7 +212,9 @@
           "settings": {
             "title": "Date Night",
             "text": "Deep neckline. Colour that reads in low light. Prints that tell the story.",
-            "default_asset": "noble-occasion-datenight.png"
+            "default_asset": "noble-occasion-datenight.png",
+            "link_label": "",
+            "link": ""
           }
         }
       },
@@ -204,7 +228,8 @@
         "heading": "Not for occasions.",
         "heading_italic": "For the everyday.",
         "subtext": "Four situations. One capsule. Built to mix with what you already own.",
-        "cta_label": "Shop the collection"
+        "cta_label": "Shop the collection",
+        "cta_link": ""
       }
     },
     "featured": {
@@ -218,7 +243,8 @@
             "price": "$445 CAD",
             "default_asset": "noble-product-sanganeri.png",
             "badge": "Bestseller",
-            "badge_style": "default"
+            "badge_style": "default",
+            "link": ""
           }
         },
         "p2": {
@@ -227,7 +253,10 @@
             "craft": "Ajrakh motif · Kutch",
             "title": "Indigo vest + wide-leg co-ord",
             "price": "$565 CAD",
-            "default_asset": "noble-product-indigo.png"
+            "default_asset": "noble-product-indigo.png",
+            "badge": "",
+            "badge_style": "default",
+            "link": ""
           }
         },
         "p3": {
@@ -238,7 +267,8 @@
             "price": "$310 CAD",
             "default_asset": "noble-product-jamdani.png",
             "badge": "New",
-            "badge_style": "new"
+            "badge_style": "new",
+            "link": ""
           }
         },
         "p4": {
@@ -247,7 +277,10 @@
             "craft": "Ikat · Pochampally",
             "title": "Ikat mini skirt",
             "price": "$295 CAD",
-            "default_asset": "noble-product-ikat.png"
+            "default_asset": "noble-product-ikat.png",
+            "badge": "",
+            "badge_style": "default",
+            "link": ""
           }
         }
       },
@@ -260,7 +293,9 @@
       "settings": {
         "heading": "Featured Pieces",
         "subtext": "Hand-picked from the soft-launch capsule. Each carries a number, a craft, and the hours behind it.",
-        "link_label": "Shop all styles"
+        "link_label": "Shop all styles",
+        "link_url": "",
+        "collection": ""
       }
     },
     "categories": {
@@ -270,42 +305,54 @@
           "type": "item",
           "settings": {
             "label": "Tops",
-            "default_asset": "noble-cat-tops.png"
+            "default_asset": "noble-cat-tops.png",
+            "link": "",
+            "active": false
           }
         },
         "c2": {
           "type": "item",
           "settings": {
             "label": "Skirts",
-            "default_asset": "noble-cat-skirts.png"
+            "default_asset": "noble-cat-skirts.png",
+            "link": "",
+            "active": false
           }
         },
         "c3": {
           "type": "item",
           "settings": {
             "label": "Trousers",
-            "default_asset": "noble-product-indigo.png"
+            "default_asset": "noble-product-indigo.png",
+            "link": "",
+            "active": false
           }
         },
         "c4": {
           "type": "item",
           "settings": {
             "label": "Dresses",
-            "default_asset": "noble-cat-dresses.png"
+            "default_asset": "noble-cat-dresses.png",
+            "link": "",
+            "active": false
           }
         },
         "c5": {
           "type": "item",
           "settings": {
             "label": "Co-ords",
-            "default_asset": "noble-cat-coords.png"
+            "default_asset": "noble-cat-coords.png",
+            "link": "",
+            "active": false
           }
         },
         "c6": {
           "type": "item",
           "settings": {
             "label": "Menswear",
-            "default_asset": "noble-product-sanganeri.png"
+            "default_asset": "noble-product-sanganeri.png",
+            "link": "",
+            "active": false
           }
         }
       },
@@ -319,16 +366,30 @@
       ],
       "settings": {
         "heading": "Find the silhouette first.",
+        "subheading": "",
         "shape": "circle"
       }
     },
     "fabric": {
       "type": "noble-fabric-story",
-      "settings": {}
+      "settings": {
+        "heading": "Fabric tells a story",
+        "heading_italic": "before you say a word.",
+        "subtext": "Five textile traditions. Five communities. Each piece carries the hands and hours behind it. Begin where the cloth begins.",
+        "fabric_name": "Ikat",
+        "fabric_caption": "Pre-dyed yarns woven",
+        "link_label": "Learn more",
+        "link": ""
+      }
     },
     "artisan": {
       "type": "noble-artisan",
-      "settings": {}
+      "settings": {
+        "heading": "Made by hands that remember.",
+        "text": "Every length of fabric in this collection began on a loom or under a wooden block — somewhere between Kutch, Jaipur, Telangana, and Dhaka. There are no machine substitutes for what they do.",
+        "button_label": "Know our story",
+        "button_link": ""
+      }
     },
     "stories": {
       "type": "noble-stories",
@@ -337,27 +398,35 @@
           "type": "story",
           "settings": {
             "title": "Inside the Kutch workshop",
-            "default_asset": "noble-story-1.png"
+            "default_asset": "noble-story-1.png",
+            "link": "",
+            "is_instagram": false
           }
         },
         "s2": {
           "type": "story",
           "settings": {
             "title": "Indigo, the slow way",
-            "default_asset": "noble-story-2.png"
+            "default_asset": "noble-story-2.png",
+            "link": "",
+            "is_instagram": false
           }
         },
         "s3": {
           "type": "story",
           "settings": {
             "title": "Jamdani on the loom",
-            "default_asset": "noble-story-3.png"
+            "default_asset": "noble-story-3.png",
+            "link": "",
+            "is_instagram": false
           }
         },
         "s4": {
           "type": "story",
           "settings": {
+            "title": "",
             "default_asset": "noble-story-4.png",
+            "link": "",
             "is_instagram": true
           }
         }
@@ -368,7 +437,11 @@
         "s3",
         "s4"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "Stories from",
+        "heading_italic": "the loom.",
+        "subtext": "Process notes, maker portraits, and the slow news from each craft cluster we work with."
+      }
     }
   },
   "order": [
